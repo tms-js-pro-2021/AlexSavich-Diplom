@@ -5,7 +5,13 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
-export const RadioGroupCustom = ({ title, btns, onSelect, value }) => {
+export const RadioGroupCustom = ({
+  title,
+  btns,
+  onSelect,
+  value,
+  horizontal = true,
+}) => {
   const handleChange = event => {
     onSelect(event.target.value);
   };
@@ -14,7 +20,7 @@ export const RadioGroupCustom = ({ title, btns, onSelect, value }) => {
     <FormControl component="fieldset">
       <FormLabel component="legend">{title}</FormLabel>{' '}
       <RadioGroup
-        row
+        row={horizontal}
         aria-label={title}
         name="controlled-radio-buttons-group"
         value={value}

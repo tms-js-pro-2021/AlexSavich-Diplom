@@ -33,7 +33,7 @@ export const Product = () => {
   const [size, setSize] = useState('m');
 
   const pushToCart = () => {
-    setItemToCart({ id: product.id, size });
+    setItemToCart({ ...product, size });
   };
 
   if (!product && !loading) {

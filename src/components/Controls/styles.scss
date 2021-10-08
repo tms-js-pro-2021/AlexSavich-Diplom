@@ -1,29 +1,26 @@
 .controls {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+
+  &__item {
+    position: relative;
     display: flex;
     align-items: center;
-    margin-left: auto;
-    
-    &__item {
-        position: relative;
-        display: flex;
-        align-items: center;
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 28px;
-        color: #000;
-    
-        &:not(:last-child) {
-          margin-right: 36px;
-        }
-        &-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 56px;
-            height: 56px;
-            border-radius: 100px;
-            background: rgba(232, 232, 232, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-          }
-}
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 28px;
+    color: #000;
+
+    &:not(:last-child) {
+      margin-right: 36px;
+    }
+    &-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+    }
+  }
 }

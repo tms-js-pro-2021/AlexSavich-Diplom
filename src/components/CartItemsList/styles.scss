@@ -1,0 +1,14 @@
+.order-summary {
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+
+  &-price {
+    margin-right: 15px;
+    font-size: 20px;
+
+    span {
+      font-weight: bold;
+    }
+  }
+}

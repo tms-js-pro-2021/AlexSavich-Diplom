@@ -3,7 +3,7 @@ import { Container } from '@material-ui/core';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
 
-import './styles.css';
+import './styles.scss';
 
 export const MainLayout = ({ children }) => (
   <div className="main-layout">
