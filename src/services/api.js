@@ -28,25 +28,29 @@ export function setupApi(token) {
     ...imagesApi.defaults.headers,
     Authorization: `Token ${token}`,
   };
-}
+} 
+// сетапит токен в заголовки для апи с продуктами и картинками
 
 export const getAllProducts = () => businessApi.get('/products');
 export const getProductById = id => businessApi.get(`product?productId=${id}`);
 
-export const createProduct = async (product, form) => {
-  const { data: newProduct } = await businessApi.post('/product/create', {
-    ...product,
-  });
 
+export const createProduct = async (product, form) => {
+  const { data: newProduct } = await businessApi.post('/product/create', 
+    product,
+  );
+  
   const { data } = await imagesApi.post('images', form);
+  // получили адрес картинки
   return businessApi.put(`/product/update/${newProduct.id}`, {
     ...newProduct,
     imgUri: [data],
   });
 };
+// вернули промис
 
 export const updateProduct = (id, updatedFields) =>
-  businessApi.put(`/product/update/${id}`, { ...updatedFields });
+  businessApi.put(`/product/update/${id}`, updatedFields);
 
 export const deleteProduct = id =>
   businessApi.delete(`product?productId=${id}`);

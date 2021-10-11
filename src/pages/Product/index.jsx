@@ -96,8 +96,8 @@ export const Product = () => {
               <Edit /> Product
             </Link>
 
-            <IconButton aria-label="cart" onClick={onProductDelete}>
-              <DeleteForever />
+            <IconButton  aria-label="cart"  onClick={onProductDelete}>
+              <DeleteForever  /> 
             </IconButton>
           </div>
         )}

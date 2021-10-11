@@ -4,7 +4,9 @@ const CART_ITEMS = 'cart_items';
 
 const dispatchCartChanges = () => {
   const event = new CustomEvent('cart-items-change');
-  document.dispatchEvent(event);
+  document.dispatchEvent(event); 
+  // корзина изменена (всему документу)
+
 };
 
 export const setToken = (token, expiredAt) => {
@@ -21,7 +23,7 @@ export const getCartItems = () => {
 };
 
 export const setItemToCart = item => {
-  const cartItems = getCartItems() || [];
+  const cartItems = getCartItems();
 
   localStorage.setItem(CART_ITEMS, JSON.stringify([...cartItems, item]));
 
@@ -30,7 +32,7 @@ export const setItemToCart = item => {
 };
 
 export const removeFromCart = itemId => {
-  const cartItems = getCartItems() || [];
+  const cartItems = getCartItems();
 
   localStorage.setItem(
     CART_ITEMS,

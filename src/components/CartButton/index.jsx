@@ -22,6 +22,7 @@ export const CartButton = () => {
       handleLocalStorageChange,
       false
     );
+      // вызов когда замаунтится или изменится когда зависимоти в массиве зависмоти
 
     return () => {
       document.removeEventListener('storage', handleLocalStorageChange);
@@ -30,6 +31,7 @@ export const CartButton = () => {
         handleLocalStorageChange
       );
     };
+    // когда размаeyтится
   }, []);
 
   return (
