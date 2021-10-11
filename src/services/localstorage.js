@@ -1,4 +1,5 @@
 const TOKEN = 'token';
+const TOKEN_EXPERATION = 'token_exp';
 const CART_ITEMS = 'cart_items';
 
 const dispatchCartChanges = () => {
@@ -6,11 +7,13 @@ const dispatchCartChanges = () => {
   document.dispatchEvent(event);
 };
 
-export const setToken = token => {
+export const setToken = (token, expiredAt) => {
   localStorage.setItem(TOKEN, token);
+  localStorage.setItem(TOKEN_EXPERATION, expiredAt);
 };
 
 export const getToken = () => localStorage.getItem(TOKEN);
+export const getTokenExperation = () => localStorage.getItem(TOKEN_EXPERATION);
 
 export const getCartItems = () => {
   const data = localStorage.getItem(CART_ITEMS);

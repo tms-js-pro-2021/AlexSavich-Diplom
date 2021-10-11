@@ -9,7 +9,8 @@ import {
   Checkbox,
   FormControlLabel,
 } from '@material-ui/core';
-import api, { setupApi } from '../../api';
+import { setToken } from '../../services/localstorage';
+import { authApi, setupApi } from '../../services/api';
 
 export function LoginPage() {
   const passwordRef = useRef();
@@ -23,11 +24,15 @@ export function LoginPage() {
     },
     onSubmit: values => {
       const endpoint = isNewUser ? 'signup' : 'signin';
-      api
+      authApi
         .post(`/users/${endpoint}`, values)
-        .then(({ data: { token } = {} }) => {
-          window.sessionStorage.token = token;
+        // eslint-disable-next-line camelcase
+        .then(({ data: { token, token_expires } = {} }) => {
+          // eslint-disable-next-line camelcase
+          setToken(token, Date.now() + token_expires * 1000);
+
           setupApi(token);
+
           replace('/');
         })
         .catch(err => {

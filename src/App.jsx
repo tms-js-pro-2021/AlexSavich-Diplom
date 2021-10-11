@@ -3,15 +3,19 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { setupApi } from './api';
+import { setupApi } from './services/api';
 import AppContext from './AppContext';
 import { LoginPage } from './pages/LoginPage';
 import { Home } from './pages/Home';
 import { MainLayout } from './components/MainLayout';
+import { ProtectedRoute } from './components/ProtectedRoute';
 import { About } from './pages/About';
 import { Cart } from './pages/Cart';
 import { Product } from './pages/Product';
+import { CreateProduct } from './pages/CreateProduct';
+import { EditProduct } from './pages/EditProduct';
 import { Contacts } from './pages/Contacts';
+import { getToken } from './services/localstorage';
 
 const queryClient = new QueryClient({});
 
@@ -20,8 +24,13 @@ export default function App() {
 
   useEffect(() => {
     document.getElementById('loader').remove();
-    const { token } = window.sessionStorage;
-    if (token) setupApi(token);
+
+    const token = getToken();
+
+    if (token) {
+      setupApi(token);
+    }
+
     setIsInitialized(true);
   }, []);
 
@@ -46,11 +55,18 @@ export default function App() {
               <Route path="/cart" exact>
                 <Cart />
               </Route>
-              <Route path="/product/:id" exact>
-                <Product />
-              </Route>
+
               <Route path="/contacts" exact>
                 <Contacts />
+              </Route>
+              <ProtectedRoute path="/product-create" exact>
+                <CreateProduct />
+              </ProtectedRoute>
+              <ProtectedRoute path="/product-edit/:id" exact>
+                <EditProduct />
+              </ProtectedRoute>
+              <Route path="/product/:id" exact>
+                <Product />
               </Route>
             </MainLayout>
 
