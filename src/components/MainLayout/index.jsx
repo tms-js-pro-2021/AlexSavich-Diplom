@@ -1,18 +1,13 @@
 import React from 'react';
 import { Container } from '@material-ui/core';
 import { Header } from '../Header';
-import { Logo } from '../Logo';
-import { Navigation } from '../Navigation';
 import { Footer } from '../Footer';
 
-import './styles.css';
+import './styles.scss';
 
 export const MainLayout = ({ children }) => (
   <div className="main-layout">
-    <Header>
-      <Logo />
-      <Navigation />
-    </Header>
+    <Header />
     <Container>{children}</Container>
     <Footer />
   </div>

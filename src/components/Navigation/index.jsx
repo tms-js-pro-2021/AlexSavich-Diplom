@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './styles.scss';
 
 export const Navigation = () => (
-  <div>
-    <Link to="/">Home</Link>
-    <Link to="/about">About</Link>
-    <Link to="/cart">Cart</Link>
-    <Link to="/product/1">Product</Link>
+  <div className="navigation">
+    <Link className="navigation__item" to="/about">
+      About
+    </Link>
+    <Link className="navigation__item" to="/contacts">
+      Contacts
+    </Link>
   </div>
 );

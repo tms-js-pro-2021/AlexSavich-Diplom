@@ -1,0 +1,15 @@
+.product-form {
+  display: flex;
+  flex-direction: column;
+
+  .MuiFormControl-root {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 16px;
+  }
+
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+  }
+}
