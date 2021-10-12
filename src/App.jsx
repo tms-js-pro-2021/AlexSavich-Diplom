@@ -4,7 +4,6 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { setupApi } from './services/api';
-import AppContext from './AppContext';
 import { LoginPage } from './pages/LoginPage';
 import { Home } from './pages/Home';
 import { MainLayout } from './components/MainLayout';
@@ -38,7 +37,6 @@ export default function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AppContext>
         <Router>
           <Switch>
             <Route path="/login">
@@ -75,7 +73,6 @@ export default function App() {
             </Route>
           </Switch>
         </Router>
-      </AppContext>
       <ReactQueryDevtools />
     </QueryClientProvider>
   );
